@@ -1,0 +1,124 @@
+:root {
+    color-scheme: light dark;
+    --bg: #f5f5f5;
+    --fg: #1a1a1a;
+    --border: #ccc;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #181818;
+        --fg: #eee;
+        --border: #444;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+h1 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+/* The monitor mimics the PM5's own dark bezel + green LCD -- fixed regardless
+   of page theme, since it's a physical-device replica, not themed page UI. */
+.monitor {
+    width: 100%;
+    max-width: 480px;
+    background: #2b2b2b;
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.screen {
+    padding: 1.25rem;
+    border-radius: 6px;
+    background: #9ead86;
+    color: #1c2a14;
+    font-family: 'Courier New', monospace;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.monitor.live .screen {
+    opacity: 1;
+}
+
+.screen-header {
+    display: flex;
+    justify-content: space-between;
+    min-height: 1.2em;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.screen-primary {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.primary-label {
+    display: block;
+    font-size: 0.85rem;
+}
+
+.primary-value {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.screen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.cell {
+    text-align: center;
+}
+
+.cell-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.cell-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
