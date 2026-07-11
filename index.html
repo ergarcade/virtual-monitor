@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Virtual PM5 Monitor</title>
+
+        <script src="pm5-base/lib/pm5-ble.js"></script>
+        <script src="pm5-base/lib/pm5-hid.js"></script>
+        <script src="pm5-base/lib/pm5-mock.js"></script>
+        <script src="pm5-base/lib/mock-data/csv-source.js"></script>
+        <script src="pm5-base/lib/pm5-fields.js"></script>
+        <script src="slots.js"></script>
+        <script src="app.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Virtual PM5 Monitor</h1>
+            <div id="controls">
+                <select id="transport" aria-label="Transport">
+                    <option value="bluetooth">Bluetooth</option>
+                    <option value="usb">USB</option>
+                    <option value="mock">Mock</option>
+                </select>
+                <select id="mock-speed" aria-label="Mock replay speed" hidden>
+                    <option value="1" selected>1x</option>
+                    <option value="2">2x</option>
+                    <option value="4">4x</option>
+                    <option value="8">8x</option>
+                    <option value="16">16x</option>
+                </select>
+                <button id="connect">Connect</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="monitor">
+                <div class="screen">
+                    <div class="screen-header">
+                        <span id="workout-type">Just Row</span>
+                        <span id="workout-state"></span>
+                    </div>
+                    <div class="screen-primary">
+                        <span class="primary-label">/500m</span>
+                        <span class="primary-value" id="slot-pace">&ndash;:&ndash;&ndash;</span>
+                    </div>
+                    <div class="screen-grid">
+                        <div class="cell">
+                            <span class="cell-label">Time</span>
+                            <span class="cell-value" id="slot-time">0:00:00</span>
+                        </div>
+                        <div class="cell">
+                            <span class="cell-label">Meters</span>
+                            <span class="cell-value" id="slot-distance">0m</span>
+                        </div>
+                        <div class="cell">
+                            <span class="cell-label">S/M</span>
+                            <span class="cell-value" id="slot-strokeRate">0</span>
+                        </div>
+                        <div class="cell">
+                            <span class="cell-label">Watts</span>
+                            <span class="cell-value" id="slot-power">0W</span>
+                        </div>
+                        <div class="cell">
+                            <span class="cell-label">Cal/Hr</span>
+                            <span class="cell-value" id="slot-calories">0</span>
+                        </div>
+                        <div class="cell">
+                            <span class="cell-label">Heart Rate</span>
+                            <span class="cell-value" id="slot-heartRate">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
