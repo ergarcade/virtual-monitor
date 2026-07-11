@@ -17,6 +17,10 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000/`, pick a transport, and click Connect.
 
+Picking **Mock** reveals a file picker: choose a previously exported `.csv`
+(Concept2 Logbook format) or `.json` (from `ergarcade/recorder`'s full-fidelity
+export) to replay that session instead of the shipped demo workout.
+
 ## Getting the code
 
 This repo pulls in `pm5-base` as a git submodule, so clone with:

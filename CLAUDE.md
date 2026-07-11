@@ -59,7 +59,14 @@ Cal-Hr/Heart Rate cells.
   `module.exports` shim pattern as `pm5-base/lib`.
 - **`app.js`** — the connect/lifecycle wiring (`TRANSPORTS` map, `connecting`/
   `connected`/`disconnected` handlers) is carried over near-verbatim from
-  `pm5-base/example/app.js`. The only real difference is `cbMessage`: instead
+  `pm5-base/example/app.js`. `TRANSPORTS.mock.build()` reads `#mock-file`'s
+  selected file (hidden/shown and enabled/disabled alongside `#mock-speed`
+  and `#transport`, Mock-only, locked while connected): no file falls back
+  to the shipped demo CSV via `loadSamples`, a `.json` file uses
+  `loadEvents` (`eventsSource.loadFromFile`, pm5-base), anything else uses
+  `loadSamples` (`csvSource.loadFromFile`) — so a workout recorded in
+  `ergarcade/recorder` (either export format) can be replayed here. The only
+  real difference from the example app is `cbMessage`: instead
   of building cards, it walks `SLOTS`, calls `pickSlot` per slot, and writes
   `pm5fields[key].printable(value)` into that slot's `#slot-<name>` element.
   `workoutType`/`workoutState` are written directly (BLE-only fields, no HID
