@@ -83,7 +83,12 @@ Cal-Hr/Heart Rate cells.
   on connect/disconnect) dims the screen when idle, mimicking a powered-off
   display.
 - **`index.html`** loads `pm5-base/lib/*.js` via `<script>` tags (same load
-  order as `pm5-base/example/index.html`), then `slots.js`, then `app.js`.
+  order as `pm5-base/example/index.html`), then `pm5-base/ui/info-modal.js`,
+  `slots.js`, then `app.js`. The `#info-modal` dialog (content only — its
+  open/close wiring is `initInfoModal()`, called from `app.js`'s
+  `DOMContentLoaded`, see `pm5-base/README.md`'s "Shared header UI" section)
+  describes the app and how Mock works, opened via the "i" button next to
+  the title.
 
 ### Adding a new slot to the screen
 

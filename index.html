@@ -11,9 +11,11 @@
         <script src="pm5-base/lib/mock-data/csv-source.js"></script>
         <script src="pm5-base/lib/mock-data/events-source.js"></script>
         <script src="pm5-base/lib/pm5-fields.js"></script>
+        <script src="pm5-base/ui/info-modal.js"></script>
         <script src="slots.js"></script>
         <script src="app.js"></script>
 
+        <link rel="stylesheet" href="pm5-base/ui/info-modal.css">
         <link rel="stylesheet" href="style.css">
     </head>
 
@@ -39,6 +41,45 @@
         </header>
 
         <main>
+            <dialog id="info-modal">
+                <button data-close aria-label="Close">&times;</button>
+
+                <p>
+                <strong>Virtual PM5 Monitor</strong> is an on-screen replica of a
+                <a target="_blank" href="https://www.concept2.com/indoor-rowers/performance-monitors">Concept2
+                PM5</a>'s own "Just Row" display, fed by live data from a real PM5 &mdash; over
+                <strong>Bluetooth</strong> (wireless) or <strong>USB</strong>.
+                </p>
+
+                <h2>Requirements</h2>
+                <ul>
+                    <li><strong>Bluetooth:</strong> a
+                        <a target="_blank" href="https://caniuse.com/#feat=web-bluetooth">Web Bluetooth</a>
+                        browser (Chrome/Edge on desktop) and the PM5's wireless turned on.</li>
+                    <li><strong>USB:</strong> Chrome or Edge (Web HID is not supported in Firefox or Safari)
+                        with the PM5 connected by USB.</li>
+                </ul>
+
+                <h2>Usage</h2>
+                <ul>
+                    <li>Pick <strong>Bluetooth</strong> or <strong>USB</strong>, click <strong>Connect</strong>,
+                        and pick the PM5 from the browser's device picker.</li>
+                    <li>Row, ski, or bike. The screen lights up and tracks the real PM5's display live.</li>
+                </ul>
+
+                <h2>Mock</h2>
+                <p>
+                Pick <strong>Mock</strong> to try it without hardware. Choose a replay speed, optionally
+                upload a previously recorded workout (a Concept2 Logbook <code>.csv</code> export, or a
+                <code>.json</code> export from <a target="_blank" href="https://github.com/ergarcade/recorder">recorder</a>),
+                and click <strong>Connect</strong>. Leave the file picker empty to replay a bundled demo
+                workout instead.
+                </p>
+                <p>
+                <a target="_blank" href="https://github.com/ergarcade/virtual-monitor">Source on GitHub</a>.
+                </p>
+            </dialog>
+
             <div class="monitor">
                 <div class="screen">
                     <div class="screen-header">
