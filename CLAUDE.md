@@ -68,7 +68,16 @@ Cal-Hr/Heart Rate cells.
   `ergarcade/recorder` (either export format) can be replayed here. The only
   real difference from the example app is `cbMessage`: instead
   of building cards, it walks `SLOTS`, calls `pickSlot` per slot, and writes
-  `pm5fields[key].printable(value)` into that slot's `#slot-<name>` element.
+  `pm5fields[key].printable(value, event.data.ergMachineType)` into that
+  slot's `#slot-<name>` element. The second argument only matters to the
+  pace slot (BikeErg's pace unit is /1000m, not /500m — see `pm5-base`'s
+  notes on `pm5printables.pace`); every other slot's printable ignores it.
+  No state tracking needed here (unlike `ergarcade/recorder`, which persists
+  it) since `cbMessage` always renders from a live event, and BLE's
+  additional-status conveniently bundles `ergMachineType` alongside
+  `currentPace` in that same event already. `#slot-pace`'s value now
+  includes its own unit suffix (`1:43/500m` or, on a bike, `4:10/1000m`),
+  so `.primary-label` is just the static text "Pace", not a hardcoded unit.
   `workoutType`/`workoutState` are written directly (BLE-only fields, no HID
   equivalent, so no slot mapping needed). The `.monitor.live` class (toggled
   on connect/disconnect) dims the screen when idle, mimicking a powered-off

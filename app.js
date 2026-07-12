@@ -59,7 +59,11 @@ const cbMessage = (event) => {
         const hit = pickSlot(event.data, keys);
         if (!hit) continue;
         const [key, value] = hit;
-        el(`#slot-${slot}`).textContent = pm5fields[key].printable(value);
+        // ergMachineType is only relevant to pace's printable (bike vs
+        // rower/ski pace unit) -- harmless for every other slot, which
+        // ignores the extra arg. BLE's additional-status conveniently
+        // bundles it alongside currentPace in the same event.
+        el(`#slot-${slot}`).textContent = pm5fields[key].printable(value, event.data.ergMachineType);
     }
 
     if ('workoutType' in event.data) {
