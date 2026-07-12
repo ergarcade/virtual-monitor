@@ -21,6 +21,8 @@ Picking **Mock** reveals a file picker: choose a previously exported `.csv`
 (Concept2 Logbook format) or `.json` (from `ergarcade/recorder`'s full-fidelity
 export) to replay that session instead of the shipped demo workout.
 
+Click the "i" button next to the title for the same info in-app.
+
 ## Getting the code
 
 This repo pulls in `pm5-base` as a git submodule, so clone with:
